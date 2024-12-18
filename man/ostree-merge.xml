@@ -1,0 +1,73 @@
+<?xml version='1.0'?> <!--*-nxml-*-->
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+    "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+
+<!--
+Copyright 2024 Karim Vergnes <me@thesola.io>
+
+SPDX-License-Identifier: LGPL-2.0+
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library. If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<refentry id="ostree">
+
+    <refentryinfo>
+        <title>ostree merge</title>
+        <productname>OSTree</productname>
+
+        <authorgroup>
+            <author>
+                <contrib>Developer</contrib>
+                <firstname>Karim</firstname>
+                <surname>Vergnes</surname>
+                <email>me@thesola.io</email>
+            </author>
+        </authorgroup>
+    </refentryinfo>
+
+    <refmeta>
+        <refentrytitle>ostree merge</refentrytitle>
+        <manvolnum>1</manvolnum>
+    </refmeta>
+
+    <refnamediv>
+        <refname>ostree-merge</refname>
+        <refpurpose>Merge contents of two commits into a new commit</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv>
+            <cmdsynopsis>
+                <command>ostree merge</command> <arg choice="req">COMMITA</arg> <arg choice="req">COMMITB</arg>
+            </cmdsynopsis>
+    </refsynopsisdiv>
+
+    <refsect1>
+        <title>Description</title>
+
+        <para>
+            This command functions much like the "git merge" command, in that it merges the contents of two commits into a new commit object. If the first argument is a branch, the resulting commit will be added to the branch.
+        </para>
+
+    </refsect1>
+
+    <refsect1>
+        <title>Example</title>
+        <para><command>$ ostree merge my-branch 64b490af</command></para>
+<programlisting>
+        888b060f6649638599c92662ff8c9349d144f6df1155556274fe29667d6ba8c0
+</programlisting>
+    </refsect1>
+
+</refentry>

@@ -1,0 +1,50 @@
+'\" t
+.\"     Title: ostree merge
+.\"    Author: Karim Vergnes <me@thesola.io>
+.\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
+.\"      Date: 01/01/1980
+.\"    Manual: ostree merge
+.\"    Source: OSTree
+.\"  Language: English
+.\"
+.TH "OSTREE MERGE" "1" "" "OSTree" "ostree merge"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+ostree-merge \- Merge contents of two commits into a new commit
+.SH "SYNOPSIS"
+.HP \w'\fBostree\ merge\fR\ 'u
+\fBostree merge\fR {COMMITA} {COMMITB}
+.SH "DESCRIPTION"
+.PP
+This command functions much like the "git merge" command, in that it merges the contents of two commits into a new commit object\&. If the first argument is a branch, the resulting commit will be added to the branch\&.
+.SH "EXAMPLE"
+.PP
+\fB$ ostree merge my\-branch 64b490af\fR
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+        888b060f6649638599c92662ff8c9349d144f6df1155556274fe29667d6ba8c0
+.fi
+.if n \{\
+.RE
+.\}

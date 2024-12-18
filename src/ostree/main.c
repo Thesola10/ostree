@@ -61,6 +61,7 @@ static OstreeCommand commands[] = {
     "Initialize a new empty repository" },
   { "log", OSTREE_BUILTIN_FLAG_NONE, ostree_builtin_log, "Show log starting at commit or ref" },
   { "ls", OSTREE_BUILTIN_FLAG_NONE, ostree_builtin_ls, "List file paths" },
+  { "merge", OSTREE_BUILTIN_FLAG_NONE, ostree_builtin_merge, "Merge two COMMITs together" },
   { "prune", OSTREE_BUILTIN_FLAG_NONE, ostree_builtin_prune, "Search for unreachable objects" },
   { "pull-local", OSTREE_BUILTIN_FLAG_NONE, ostree_builtin_pull_local, "Copy data from SRC_REPO" },
 #ifdef HAVE_LIBCURL_OR_LIBSOUP

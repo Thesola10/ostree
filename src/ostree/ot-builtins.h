@@ -46,6 +46,7 @@ BUILTINPROTO (gpg_sign);
 #endif
 BUILTINPROTO (init);
 BUILTINPROTO (log);
+BUILTINPROTO (merge);
 BUILTINPROTO (pull);
 BUILTINPROTO (pull_local);
 BUILTINPROTO (ls);
