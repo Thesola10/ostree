@@ -1,6 +1,6 @@
 [submodule "libglnx"]
 	path = libglnx
-	url = https://github.com/GNOME/libglnx
+	url = https://github.com/thesola10/libgnonlnx
 [submodule "bsdiff"]
 	path = bsdiff
 	url = https://github.com/mendsley/bsdiff
