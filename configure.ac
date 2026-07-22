@@ -315,6 +315,26 @@ AS_IF([test x$have_gpgme = xyes],
 )
 AM_CONDITIONAL(USE_GPGME, test "x$have_gpgme" = xyes)
 
+dnl The "ostree admin" subcommand manages a booted deployment (bootloader
+dnl config, /etc merges, /var, kernel args, etc). None of that has meaning
+dnl on a platform that isn't booting via ostree, so default it to off
+dnl anywhere but Linux; still overridable explicitly either way.
+AC_CANONICAL_HOST
+AC_ARG_ENABLE(ostree-admin,
+              AS_HELP_STRING([--enable-ostree-admin],
+                             [Build the "ostree admin" deployment management subcommand @<:@default: yes on Linux, no elsewhere@:>@]),
+              [], [
+                case "$host_os" in
+                  linux*) enable_ostree_admin=yes ;;
+                  *) enable_ostree_admin=no ;;
+                esac
+              ])
+AM_CONDITIONAL(BUILDOPT_OSTREE_ADMIN, test x$enable_ostree_admin != xno)
+AS_IF([test x$enable_ostree_admin = xno],
+    [ AC_DEFINE([OSTREE_DISABLE_ADMIN], 1, [Define to disable the "ostree admin" subcommand]) ],
+    [ OSTREE_FEATURES="$OSTREE_FEATURES ostree-admin" ]
+)
+
 AC_ARG_WITH(composefs,
 	    AS_HELP_STRING([--with-composefs], [Support composefs (default yes)]),
 	    :, with_composefs=maybe)
@@ -759,7 +779,8 @@ echo "
     dracut:                                       $with_dracut
     mkinitcpio:                                   $with_mkinitcpio
     Static compiler for ostree-prepare-root:      $with_static_compiler
-    Composefs:                                    $have_composefs"
+    Composefs:                                    $have_composefs
+    ostree admin subcommand:                      $enable_ostree_admin"
 AS_IF([test x$with_builtin_grub2_mkconfig = xyes], [
     echo "    builtin grub2-mkconfig (instead of system):   $with_builtin_grub2_mkconfig"
 ], [

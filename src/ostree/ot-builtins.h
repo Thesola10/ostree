@@ -31,7 +31,9 @@ G_BEGIN_DECLS
   gboolean ostree_builtin_##name (int argc, char **argv, OstreeCommandInvocation *invocation, \
                                   GCancellable *cancellable, GError **error)
 
+#ifndef OSTREE_DISABLE_ADMIN
 BUILTINPROTO (admin);
+#endif
 BUILTINPROTO (cat);
 BUILTINPROTO (config);
 BUILTINPROTO (checkout);

@@ -70,6 +70,7 @@ stdenv.mkDerivation (finalAttrs: {
     "--without-gpgme"
     "--without-selinux"
     "--disable-rofiles-fuse"
+    "--disable-admin"
     "--enable-installed-tests"
     "--with-ed25519-libsodium"
   ]

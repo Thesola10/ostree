@@ -148,10 +148,12 @@ dump_commit (GVariant *variant, OstreeDumpFlags flags)
   g_print ("ContentChecksum:  %s\n", contents ?: "<invalid commit>");
   g_print ("Date:  %s\n", str);
 
+#ifndef OSTREE_DISABLE_ADMIN
   if ((version = ot_admin_checksum_version (variant)))
     {
       g_print ("Version: %s\n", version);
     }
+#endif
 
   if (subject[0])
     {

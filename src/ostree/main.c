@@ -29,14 +29,31 @@
 
 #include "ot-builtins.h"
 
+#ifdef OSTREE_DISABLE_ADMIN
+static gboolean
+ostree_builtin_admin_disabled (int argc, char **argv, OstreeCommandInvocation *invocation,
+                               GCancellable *cancellable, GError **error)
+{
+  g_set_error_literal (error, G_IO_ERROR, G_IO_ERROR_NOT_SUPPORTED,
+                       "This build of ostree was compiled without \"ostree admin\" support "
+                       "(--enable-ostree-admin was not set)");
+  return FALSE;
+}
+#endif
+
 static OstreeCommand commands[] = {
   /* Note: all admin related commands have
    * no_repo as their command flag, but each
    * admin command may have their own
    * admin flag
    */
+#ifndef OSTREE_DISABLE_ADMIN
   { "admin", OSTREE_BUILTIN_FLAG_NO_REPO, ostree_builtin_admin,
     "Commands for managing a host system booted with ostree" },
+#else
+  { "admin", OSTREE_BUILTIN_FLAG_NO_REPO, ostree_builtin_admin_disabled,
+    "Commands for managing a host system booted with ostree (not built in this configuration)" },
+#endif
   { "cat", OSTREE_BUILTIN_FLAG_NONE, ostree_builtin_cat, "Concatenate contents of files" },
   { "checkout", OSTREE_BUILTIN_FLAG_NONE, ostree_builtin_checkout,
     "Check out a commit into a filesystem tree" },

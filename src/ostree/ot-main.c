@@ -555,6 +555,7 @@ on_sysroot_journal_msg (OstreeSysroot *sysroot, const char *msg, void *dummy)
   g_print ("%s\n", msg);
 }
 
+#ifndef OSTREE_DISABLE_ADMIN
 gboolean
 ostree_admin_sysroot_load (OstreeSysroot *sysroot, OstreeAdminBuiltinFlags flags,
                            GCancellable *cancellable, GError **error)
@@ -662,6 +663,7 @@ ostree_admin_option_context_parse (GOptionContext *context, const GOptionEntry *
 
   return TRUE;
 }
+#endif /* OSTREE_DISABLE_ADMIN */
 
 gboolean
 ostree_ensure_repo_writable (OstreeRepo *repo, GError **error)

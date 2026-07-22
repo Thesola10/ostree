@@ -173,6 +173,12 @@ make
 make install DESTDIR=/path/to/dest
 ```
 
+The `ostree admin` subcommand (deployment/bootloader management) only makes
+sense on a system that's actually booted via ostree, so `configure` defaults
+`--enable-ostree-admin` to `yes` on Linux and `no` on every other platform.
+Pass `--enable-ostree-admin` or `--disable-ostree-admin` explicitly to
+override the default in either direction.
+
 ## Contact and discussion forums
 
 There is also an `#ostree` channel on [Libera.Chat](ircs://irc.libera.chat/ostree) as
