@@ -16,12 +16,12 @@
   bison,
   libxslt,
   buildPackages,
+  emptyDirectory,
   withComposefs ? false,
   withIntrospection ?
     lib.meta.availableOn stdenv.hostPlatform gobject-introspection
     && stdenv.hostPlatform.emulatorAvailable buildPackages,
   gobject-introspection,
-  python311, python311Packages,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -53,8 +53,8 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs = [
-    curl
-    (glib.override { python3 = python311; python3Packages = python311Packages; })
+    (curl.override { runtimeShellPackage = emptyDirectory; })
+    (glib.override { stdenv = stdenv // { hostPlatform = stdenv.hostPlatform // { isStatic = true; }; }; })
     libsodium
     libarchive
     bzip2
